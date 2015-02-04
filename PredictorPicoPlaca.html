@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/validator.js"></script>
+	<script type="text/javascript" src="js/car.js"></script>	
+	<script type="text/javascript">
+	$(document).ready(function() {
+		// load data in html components
+		loadData();				
+
+		$("#start_validation").click(function(){
+		
+			// Validation data
+			var licensePlateNumber = $("#license_value").val();
+			var dayValue = $("#day_date_value").val();
+			var hourValue = $("#hour_time_value").val();
+			var minuteValue = $("#minute_time_value").val();
+						
+			if(licensePlateNumber == ""){
+				alert("Enter a License Plate Number");
+				return false;
+			}
+			
+			
+			if(dayValue == ""){
+				alert("Select Date (day)");
+				return false;
+			}
+			if(hourValue == ""){
+				alert("Select Time (hour)");
+				return false;
+			}
+			if(minuteValue == ""){
+				alert("Select Time (minute)");
+				return false;
+			}
+			
+			// Use OOP in Javascript			
+			var newCar = new Car(licensePlateNumber);
+			var result = newCar.predictorPicoYPlaca(dayValue,hourValue,minuteValue);
+			// Message of Algorithm
+			alert(result);
+			
+		});
+
+	});	
+	</script>	
+<body>
+
+<center>
+<div class="panel panel-default" style="width:500px;margin-top:100px;">  
+  <div class="panel-heading">Pico & Placa Predictor (Quito)</div>
+  <div class="panel-body">
+  <br>
+  <table class="table">
+		<tr>
+			<td><label>License plate number:</label></td>
+			<td><input id="license_value" type="text" placeholder="Insert value" ></td>
+		</tr>
+		<tr>
+			<td><label>Date:</label></td>
+			<td><label>Day:</label><select id="day_date_value"></select></td>
+		</tr>
+		<tr>
+			<td><label>Time:</label></td>
+			<td>
+				<label>Hour:</label><select id="hour_time_value"></select>&nbsp;&nbsp;
+				<label>Minute:</label><select id="minute_time_value"></select>
+			</td>
+		</tr>		
+		<tr>
+			<td colspan="2" style="text-align:center;">				
+				<button id="start_validation" class="btn btn-default" type="submit">Send</button>
+			</td>
+		</tr>
+	</table>
+  </div>
+</div>	
+</center>
+</body>
+</html>

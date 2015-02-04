@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Unit tests - Predictor Pico y Placa Algorithm</title>
+	 <link rel="stylesheet" href="qunit/qunit-1.17.1.css" /> 
+	<script type="text/javascript" src="qunit/qunit-1.17.1.js"></script>
+    <script type="text/javascript" src="../js/validator.js"></script>
+
+    <script>
+	
+    test("Unit Test list", function() {        
+        equal(predictorJSON("BBE0684","Tuesday","09","30"), "You can drive your car without any problem!!!");
+        equal(predictorJSON("POC0567","Monday","08","30"), "You can drive your car without any problem!!!");
+		equal(predictorJSON("PCB9348","Thursday","08","30"), "You can drive your car without any problem!!!");
+    });
+    </script>
+</head>
+<body>
+    <div id="qunit"></div>
+</body>
+</html>
